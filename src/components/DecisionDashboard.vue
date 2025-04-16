@@ -144,20 +144,22 @@ const decisionRecommendations = computed(() => {
           <div class="decision-body">
             <div class="risk-factors">
               <h5>风险因素：</h5>
-              <ul>
-                <li v-for="(factor, fIndex) in decision.factors" :key="fIndex">
-                  {{ factor }}
-                </li>
-              </ul>
+              <div class="custom-list">
+                <div v-for="(factor, fIndex) in decision.factors" :key="fIndex" class="list-item">
+                  <span class="list-icon">⚠️</span>
+                  <span>{{ factor }}</span>
+                </div>
+              </div>
             </div>
             
             <div class="recommended-actions">
               <h5>建议措施：</h5>
-              <ul>
-                <li v-for="(action, aIndex) in decision.actions" :key="aIndex">
-                  {{ action }}
-                </li>
-              </ul>
+              <div class="custom-list">
+                <div v-for="(action, aIndex) in decision.actions" :key="aIndex" class="list-item">
+                  <span class="list-icon">✅</span>
+                  <span>{{ action }}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -220,12 +222,24 @@ const decisionRecommendations = computed(() => {
       
       <div class="lessons-learned">
         <h3>主要经验教训</h3>
-        <ul>
-          <li>预警信息的精准性与时效性是关键，需持续提升预测模型准确度</li>
-          <li>多渠道发布预警信息可有效提高覆盖率，尤其是对老人与偏远地区居民</li>
-          <li>提前部署专业应急队伍能显著提高救援效率</li>
-          <li>预警后的应急指令需要更加清晰、具体，避免模糊表述</li>
-        </ul>
+        <div class="custom-list centered-list">
+          <div class="list-item">
+            <span class="list-icon">📊</span>
+            <span>预警信息的精准性与时效性是关键，需持续提升预测模型准确度</span>
+          </div>
+          <div class="list-item">
+            <span class="list-icon">📱</span>
+            <span>多渠道发布预警信息可有效提高覆盖率，尤其是对老人与偏远地区居民</span>
+          </div>
+          <div class="list-item">
+            <span class="list-icon">👥</span>
+            <span>提前部署专业应急队伍能显著提高救援效率</span>
+          </div>
+          <div class="list-item">
+            <span class="list-icon">📝</span>
+            <span>预警后的应急指令需要更加清晰、具体，避免模糊表述</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -315,18 +329,40 @@ const decisionRecommendations = computed(() => {
 .risk-factors h5,
 .recommended-actions h5 {
   margin-top: 0;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  text-align: center;
 }
 
-.risk-factors ul,
-.recommended-actions ul {
-  margin: 0;
-  padding-left: 20px;
+/* 自定义列表样式 */
+.custom-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 }
 
-.risk-factors li,
-.recommended-actions li {
-  margin-bottom: 4px;
+.list-item {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 6px;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+}
+
+.list-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.list-icon {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.centered-list {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .expert-section {
@@ -387,12 +423,9 @@ const decisionRecommendations = computed(() => {
   font-weight: bold;
 }
 
-.lessons-learned ul {
-  padding-left: 20px;
-}
-
-.lessons-learned li {
-  margin-bottom: 8px;
+.lessons-learned h3 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -419,6 +452,10 @@ const decisionRecommendations = computed(() => {
   .recommended-actions,
   .expert-header {
     color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .list-item {
+    background-color: rgba(255, 255, 255, 0.05);
   }
   
   .history-table table {

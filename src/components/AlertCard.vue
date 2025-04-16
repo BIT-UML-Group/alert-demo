@@ -49,11 +49,12 @@ const formattedTime = computed(() => {
       </div>
       <div class="alert-actions">
         <h4>建议采取的措施：</h4>
-        <ul>
-          <li v-for="(action, index) in alert.recommendedActions" :key="index">
-            {{ action }}
-          </li>
-        </ul>
+        <div class="custom-list">
+          <div v-for="(action, index) in alert.recommendedActions" :key="index" class="list-item">
+            <span class="list-icon">✅</span>
+            <span>{{ action }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -116,16 +117,38 @@ const formattedTime = computed(() => {
 
 .alert-actions h4 {
   margin-top: 0;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  text-align: center;
 }
 
-.alert-actions ul {
-  margin: 0;
-  padding-left: 20px;
+/* 自定义列表样式 */
+.custom-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 }
 
-.alert-actions li {
-  margin-bottom: 4px;
+.list-item {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 6px;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+}
+.list-item span {
+  text-align: left;
+}
+
+.list-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.list-icon {
+  margin-right: 10px;
+  font-size: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -145,6 +168,10 @@ const formattedTime = computed(() => {
   .alert-description,
   .alert-body {
     color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .list-item {
+    background-color: rgba(255, 255, 255, 0.05);
   }
   
   .alert-footer {
