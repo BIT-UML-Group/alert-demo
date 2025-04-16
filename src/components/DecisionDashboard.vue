@@ -175,7 +175,7 @@ const decisionRecommendations = computed(() => {
       </div>
     </div>
     
-    <div v-if="activeTab === 'history'" class="dashboard-content">
+    <div v-if="activeTab === 'history'">
       <h3>历史预警处置效果评估</h3>
       <div class="history-table">
         <table>
@@ -236,6 +236,7 @@ const decisionRecommendations = computed(() => {
   padding: 16px;
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .dashboard-header {
