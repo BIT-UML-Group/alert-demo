@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Menu as IconMenu, AlarmClock, Help, PieChart } from '@element-plus/icons-vue';
+import { Menu as IconMenu, AlarmClock, Help, PieChart, Fold, Expand } from '@element-plus/icons-vue';
+
+const isMobileMenuOpen = ref(false);
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+};
 
 const currentTime = ref(new Date().toLocaleString('zh-CN'));
 
@@ -26,8 +31,16 @@ defineEmits(['change-view']);
       <div class="logo">⚠️</div>
       <h1>灾害预警系统</h1>
     </div>
-    
-    <div class="nav-section">
+
+    <!-- 移动端菜单按钮 -->
+    <div class="mobile-menu-btn" @click="toggleMobileMenu">
+      <el-icon class="toggle-icon">
+        <expand v-if="isMobileMenuOpen" />
+        <fold v-else />
+      </el-icon>
+    </div>
+
+    <div class="nav-section" :class="{ 'mobile-nav': isMobileMenuOpen }">
       <el-menu mode="horizontal" :ellipsis="false" default-active="1" class="main-menu">
         <el-menu-item index="1" @click="$emit('change-view', 'dashboard')">
           <el-icon><icon-menu /></el-icon>
@@ -48,7 +61,7 @@ defineEmits(['change-view']);
       </el-menu>
     </div>
     
-    <div class="status-section">
+    <div class="status-section" :class="{ 'mobile-status': isMobileMenuOpen }">
       <div class="system-status">
         <div class="status-indicator" :class="systemStatus.status"></div>
         <div class="status-text">
@@ -154,6 +167,88 @@ defineEmits(['change-view']);
   color: #606266;
 }
 
+.mobile-menu-btn {
+  display: none;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 24px;
+}
+
+.toggle-icon {
+  transition: transform 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .header-container {
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .logo-section h1 {
+    font-size: 18px;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-section {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    background-color: #fff;
+    z-index: 1000;
+  }
+
+  .nav-section.mobile-nav {
+    display: block;
+  }
+
+  .main-menu {
+    width: 100%;
+  }
+
+  :deep(.el-menu) {
+    flex-direction: column;
+  }
+
+  :deep(.el-menu-item) {
+    width: 100%;
+    justify-content: flex-start;
+    height: 50px;
+    line-height: 50px;
+  }
+
+  .status-section {
+    display: none;
+  }
+
+  .status-section.mobile-status {
+    display: flex;
+    padding: 12px 16px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    flex-direction: column;
+    gap: 12px;
+
+    z-index: 800;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 264px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .el-menu--horizontal {
+    height: unset !important;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .header-container {
     background-color: #1a1a1a;
@@ -194,5 +289,16 @@ defineEmits(['change-view']);
   .time-display {
     color: rgba(255, 255, 255, 0.87);
   }
+
+  @media screen and (max-width: 768px) {
+    .nav-section {
+      background-color: #1a1a1a;
+    }
+
+    .status-section.mobile-status {
+      background-color: #1a1a1a;
+      border-top: 1px solid #333;
+    }
+  }
 }
-</style> 
+</style>
