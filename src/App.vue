@@ -126,6 +126,9 @@ html, body {
   flex: 1;
   display: flex;
   overflow: hidden;
+  max-width: 1000px;
+  width: 100vw;
+  margin: 0 auto;
 }
 
 /* 态势感知视图样式 */
