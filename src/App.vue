@@ -268,4 +268,21 @@ html, body {
     border-top: 1px solid #e6e6e6;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .info-section {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #1a1a1a;
+  }
+  .info-section h2 {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  .status-item {
+    background-color: #272323;
+    border: 1px solid #333;
+    box-shadow: 0 2px 12px rgba(194, 193, 193, 0.05);
+  }
+  
+  
+}
 </style>
