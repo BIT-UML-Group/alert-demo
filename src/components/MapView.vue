@@ -150,12 +150,14 @@ onUnmounted(() => {
 .map-legend h4 {
   margin-top: 0;
   margin-bottom: 8px;
+  color:black;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
   margin-bottom: 4px;
+  color:black;
 }
 
 .legend-icon {
