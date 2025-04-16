@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import { Menu as IconMenu, AlarmClock, Help, PieChart } from '@element-plus/icons-vue';
 
 const currentTime = ref(new Date().toLocaleString('zh-CN'));
 
@@ -29,19 +30,19 @@ defineEmits(['change-view']);
     <div class="nav-section">
       <el-menu mode="horizontal" :ellipsis="false" default-active="1" class="main-menu">
         <el-menu-item index="1" @click="$emit('change-view', 'dashboard')">
-          <i class="el-icon-menu"></i>
+          <el-icon><icon-menu /></el-icon>
           <span>态势感知</span>
         </el-menu-item>
         <el-menu-item index="2" @click="$emit('change-view', 'alerts')">
-          <i class="el-icon-alarm-clock"></i>
+          <el-icon><alarm-clock /></el-icon>
           <span>预警管理</span>
         </el-menu-item>
         <el-menu-item index="3" @click="$emit('change-view', 'decision')">
-          <i class="el-icon-s-help"></i>
+          <el-icon><help /></el-icon>
           <span>决策辅助</span>
         </el-menu-item>
         <el-menu-item index="4" @click="$emit('change-view', 'statistics')">
-          <i class="el-icon-pie-chart"></i>
+          <el-icon><pie-chart /></el-icon>
           <span>数据统计</span>
         </el-menu-item>
       </el-menu>
@@ -151,5 +152,47 @@ defineEmits(['change-view']);
 .time-display {
   font-size: 14px;
   color: #606266;
+}
+
+@media (prefers-color-scheme: dark) {
+  .header-container {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+  }
+  
+  .logo-section h1 {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  :deep(.el-menu) {
+    --el-menu-bg-color: #1a1a1a !important;
+    --el-menu-text-color: rgba(255, 255, 255, 0.6) !important;
+    --el-menu-hover-text-color: rgba(255, 255, 255, 0.87) !important;
+    --el-menu-active-color: #67c23a !important;
+    background-color: #1a1a1a !important;
+    border-bottom: none !important;
+  }
+  
+  :deep(.el-menu-item) {
+    background-color: #1a1a1a !important;
+    border-bottom-color: transparent !important;
+  }
+  
+  :deep(.el-menu-item.is-active) {
+    color: #67c23a !important;
+    border-bottom-color: #67c23a !important;
+  }
+  
+  .status-main {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .status-details {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .time-display {
+    color: rgba(255, 255, 255, 0.87);
+  }
 }
 </style> 

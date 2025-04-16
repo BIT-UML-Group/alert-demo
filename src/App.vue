@@ -106,6 +106,13 @@ html, body {
 * {
   box-sizing: border-box;
 }
+
+@media (prefers-color-scheme: dark) {
+  html, body, #app {
+    background-color: #242424;
+    color: rgba(255, 255, 255, 0.87);
+  }
+}
 </style>
 
 <style scoped>
@@ -161,6 +168,7 @@ html, body {
 
 .status-items {
   display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 

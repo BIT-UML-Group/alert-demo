@@ -99,4 +99,24 @@ onUnmounted(() => {
   flex: 1;
   min-height: 300px;
 }
+
+@media (prefers-color-scheme: dark) {
+  .chart-container {
+    background-color: #333;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid #444;
+  }
+  
+  .chart-header h3 {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .chart-legend {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .legend-item {
+    color: rgba(255, 255, 255, 0.87);
+  }
+}
 </style> 

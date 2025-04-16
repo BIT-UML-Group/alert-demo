@@ -127,4 +127,28 @@ const formattedTime = computed(() => {
 .alert-actions li {
   margin-bottom: 4px;
 }
+
+@media (prefers-color-scheme: dark) {
+  .alert-card {
+    background-color: #333;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid #444;
+  }
+  
+  .alert-header h3 {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .alert-meta-item,
+  .alert-meta-label,
+  .alert-meta-value,
+  .alert-description,
+  .alert-body {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .alert-footer {
+    border-top: 1px solid #444;
+  }
+}
 </style> 

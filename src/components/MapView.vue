@@ -165,4 +165,29 @@ onUnmounted(() => {
   margin-right: 8px;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
+
+@media (prefers-color-scheme: dark) {
+  .map-container {
+    background-color: #1a1a1a;
+    border: 1px solid #444;
+  }
+  
+  .map-overlay {
+    background-color: rgba(51, 51, 51, 0.8);
+  }
+  
+  .location-label {
+    color: #fff;
+    background-color: rgba(51, 51, 51, 0.7);
+  }
+  
+  .controls-container {
+    background-color: #333;
+    border: 1px solid #444;
+  }
+  
+  .control-label {
+    color: rgba(255, 255, 255, 0.87);
+  }
+}
 </style> 

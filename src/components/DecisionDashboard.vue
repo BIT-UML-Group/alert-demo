@@ -393,4 +393,41 @@ const decisionRecommendations = computed(() => {
 .lessons-learned li {
   margin-bottom: 8px;
 }
+
+@media (prefers-color-scheme: dark) {
+  .dashboard-container {
+    background-color: #242424;
+  }
+  
+  .dashboard-header h2,
+  .decision-section h3,
+  .expert-section h3,
+  .decision-card h4,
+  .expert-card h4 {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .decision-card,
+  .expert-card {
+    background-color: #333;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .expert-opinion,
+  .risk-factors,
+  .recommended-actions,
+  .expert-header {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .history-table table {
+    border-color: #444;
+  }
+  
+  .history-table th,
+  .history-table td {
+    border-color: #444;
+    color: rgba(255, 255, 255, 0.87);
+  }
+}
 </style> 

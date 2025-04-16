@@ -77,3 +77,43 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+  }
+  
+  body, .app-container, .main-content, .dashboard-view, .map-section,
+  .info-section, .alerts-view, .decision-view, .statistics-view {
+    background-color: #242424;
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .info-section {
+    background-color: #1a1a1a;
+    border-left: 1px solid #333;
+  }
+  
+  .info-section h2, .dashboard-header h2, h3, h4, h5 {
+    color: rgba(255, 255, 255, 0.87);
+  }
+  
+  .status-item, .decision-card, .expert-card {
+    background-color: #333;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  table {
+    color: rgba(255, 255, 255, 0.87);
+    border-color: #444;
+  }
+  
+  th, td {
+    border-color: #444;
+  }
+  
+  .dashboard-container {
+    background-color: #242424;
+  }
+}
