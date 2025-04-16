@@ -430,5 +430,8 @@ const decisionRecommendations = computed(() => {
     border-color: #444;
     color: rgba(255, 255, 255, 0.87);
   }
+  .history-table th {
+    background-color: #333;
+  }
 }
 </style> 
